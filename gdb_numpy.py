@@ -96,6 +96,8 @@ def to_array(var,shape = None):
         val = gdb.parse_and_eval(var)
     elif type(var) == gdb.Value:
         val = var
+    else:
+        assert False
 
     deref_func, arg_no, bounds, dtype = _get_deref_funcs(val, shape)
     ranges = [range(bound) for bound in bounds]
